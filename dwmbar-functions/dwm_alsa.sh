@@ -8,10 +8,10 @@
 
 dwm_alsa () {
     VOL=$(amixer get Master | tail -n1 | sed -r "s/.*\[(.*)%\].*/\1/")
-		MUTE=$(amixer get Master | tail -n1 | sed -r "s/.*(\[off\]).*/\1/")
+		MUTE=$(amixer get Master | tail -n1 | sed -r "s/.*\[(off)\].*/\1/")
     printf "%s" "$SEP1"
     if [ "$IDENTIFIER" = "unicode" ]; then
-        if [ "$VOL" -eq 0 ] || [ "$MUTE" = "[off]" ]; then
+        if [ "$VOL" -eq 0 ] || [ "$MUTE" = "off" ]; then
             printf "🔇"
         elif [ "$VOL" -gt 0 ] && [ "$VOL" -le 33 ]; then
             printf "🔈 %s%%" "$VOL"
